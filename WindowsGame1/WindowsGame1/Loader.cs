@@ -9,9 +9,9 @@ namespace WindowsGame1
 {
     class Loader
     {
-        public Texture2D load(ContentManager Content)
+        public static void load(List<Texture2D>  myTextures, ContentManager Content)
         {
-            return Content.Load<Texture2D>("M484SpaceSoldier");
+            myTextures.Add(Content.Load<Texture2D>("Jump"));
         }
     }
 }

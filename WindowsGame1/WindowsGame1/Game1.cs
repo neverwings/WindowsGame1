@@ -27,7 +27,7 @@ namespace WindowsGame1
             Content.RootDirectory = "Content";
         }
 
-        Texture2D myTexture;
+        List<Texture2D> myTextures ;
         Vector2 spritePosition = Vector2.Zero ;
         Rectangle playerFrame;
         Texture2D cropTexture;
@@ -52,12 +52,16 @@ namespace WindowsGame1
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            myTexture = loader.load(Content);
+              
+            myTextures = new List<Texture2D>();
+            Loader.load(myTextures, Content);
             
-            playerFrame = new Rectangle(10, 10,50, 50);
+
+            playerFrame = new Rectangle(1, 1,50, 50);
             cropTexture = new Texture2D(GraphicsDevice, playerFrame.Width, playerFrame.Height);
             Color[] data = new Color[playerFrame.Width * playerFrame.Height];
-            myTexture.GetData(0, playerFrame, data, 0, data.Length);
+            //get the correct texture
+            myTextures[0].GetData(0, playerFrame, data, 0, data.Length);
             cropTexture.SetData(data);
             spritePosition = new Vector2((graphics.GraphicsDevice.Viewport.Width - cropTexture.Width) / 2, (graphics.GraphicsDevice.Viewport.Height - cropTexture.Height) / 2);
             // TODO: use this.Content to load your game content here
@@ -89,6 +93,8 @@ namespace WindowsGame1
                 this.Exit();
 #endif
             // TODO: Add your update logic here
+            
+
             UpdateSprite(gameTime);
 
             base.Update(gameTime);
@@ -96,39 +102,12 @@ namespace WindowsGame1
 
         void UpdateSprite(GameTime gameTime)
         {
-            
-            //spritePosition += spriteSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            //int MaxX =
-            //    graphics.GraphicsDevice.Viewport.Width - myTexture.Width;
-            //int MinX = 0;
-            //int MaxY =
-            //    graphics.GraphicsDevice.Viewport.Height - myTexture.Height;
-            //int MinY = 0;
+            Color[] data = new Color[playerFrame.Width * playerFrame.Height];
+            for (int i = 0; i < myTextures.Count(); i++)
+            {
+                myTextures[0].GetData(0, playerFrame, data, 0, data.Length);
+            }
 
-            //// Check for bounce.
-            //if (spritePosition.X > MaxX)
-            //{
-            //    spriteSpeed.X *= -1;
-            //    spritePosition.X = MaxX;
-            //}
-
-            //else if (spritePosition.X < MinX)
-            //{
-            //    spriteSpeed.X *= -1;
-            //    spritePosition.X = MinX;
-            //}
-
-            //if (spritePosition.Y > MaxY)
-            //{
-            //    spriteSpeed.Y *= -1;
-            //    spritePosition.Y = MaxY;
-            //}
-
-            //else if (spritePosition.Y < MinY)
-            //{
-            //    spriteSpeed.Y *= -1;
-            //    spritePosition.Y = MinY;
-            //}
         }
 
         /// <summary>

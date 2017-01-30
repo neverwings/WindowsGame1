@@ -30,15 +30,20 @@
     <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.VideoImporters, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="mytexture.tga">
-      <Name>mytexture</Name>
+    <Compile Include="Jump.tga">
+      <Name>Jump</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="M484SpaceSoldier.png">
-      <Name>M484SpaceSoldier</Name>
+    <Compile Include="run_left.tga">
+      <Name>run_left</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="run_right.tga">
+      <Name>run_right</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
