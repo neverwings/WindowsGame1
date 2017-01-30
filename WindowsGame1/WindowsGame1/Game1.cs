@@ -54,7 +54,7 @@ namespace WindowsGame1
             spriteBatch = new SpriteBatch(GraphicsDevice);
             myTexture = loader.load(Content);
             
-            playerFrame = new Rectangle(10, 15,50, 50);
+            playerFrame = new Rectangle(10, 10,50, 50);
             cropTexture = new Texture2D(GraphicsDevice, playerFrame.Width, playerFrame.Height);
             Color[] data = new Color[playerFrame.Width * playerFrame.Height];
             myTexture.GetData(0, playerFrame, data, 0, data.Length);
