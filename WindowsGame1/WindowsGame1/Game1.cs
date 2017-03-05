@@ -55,18 +55,21 @@ namespace WindowsGame1
               
             myTextures = new List<Texture2D>();
             Loader.load(myTextures, Content);
-            
+            SwitchFrame(1);
+          // TODO: use this.Content to load your game content here
+        }
+        private void SwitchFrame(int currentFrame)
+        {
 
-            playerFrame = new Rectangle(1, 1,50, 50);
+            playerFrame = new Rectangle(currentFrame, 1, 50, 50);
             cropTexture = new Texture2D(GraphicsDevice, playerFrame.Width, playerFrame.Height);
             Color[] data = new Color[playerFrame.Width * playerFrame.Height];
             //get the correct texture
             myTextures[0].GetData(0, playerFrame, data, 0, data.Length);
             cropTexture.SetData(data);
             spritePosition = new Vector2((graphics.GraphicsDevice.Viewport.Width - cropTexture.Width) / 2, (graphics.GraphicsDevice.Viewport.Height - cropTexture.Height) / 2);
-            // TODO: use this.Content to load your game content here
-        }
 
+        }
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload
         /// all content.
@@ -91,6 +94,11 @@ namespace WindowsGame1
 #if WINDOWS
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 this.Exit();
+            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            {
+                SwitchFrame(52);
+                SwitchFrame(103);
+            }
 #endif
             // TODO: Add your update logic here
             
@@ -105,7 +113,7 @@ namespace WindowsGame1
             Color[] data = new Color[playerFrame.Width * playerFrame.Height];
             for (int i = 0; i < myTextures.Count(); i++)
             {
-                myTextures[0].GetData(0, playerFrame, data, 0, data.Length);
+                 myTextures[0].GetData(0, playerFrame, data, 0, data.Length);
             }
 
         }
